@@ -1,0 +1,77 @@
+% For Math-based Problem Sets
+\usepackage{expl3}
+\usepackage{xparse}
+
+% Section Format
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{Problem {\thesection}:}{0.5em}{}
+\renewcommand{\thesubsection}{\alph{subsection}.}
+\titleformat{\subsection}{\normalsize}{\textbf{\thesubsection}}{1em}{}
+\renewcommand{\thesubsubsection}{\alph{subsection}.\roman{subsubsection})}
+
+% Frame result
+\usepackage{mdframed}
+\newmdenv[%
+    align=center,
+    linewidth=4pt,
+    innerleftmargin=20,
+    innerrightmargin=20,
+    innertopmargin=2\topskip
+]{resultbox}
+
+\newmdenv[%
+    align=center,
+    linewidth=4pt,
+    innerleftmargin=20,
+    innerrightmargin=20,
+    innertopmargin=0.2\topskip
+]{resultboxSmall}
+
+
+\ExplSyntaxOn
+\NewDocumentCommand{\result}{s O{} m O{}}{
+    \begin{resultbox}
+        \tl_if_blank:nTF{#2}{}{[#2]}
+        \nopagebreak
+        \IfBooleanTF{#1}{}{\centering}
+        \large
+        \setlength{\abovedisplayskip}{0pt}
+        \setlength{\belowdisplayskip}{0pt}
+        \setlength{\fboxrule}{2pt}
+        \setlength{\fboxsep}{10pt}
+        \begin{gather*}
+            #3
+            \tl_if_blank:nTF{#3}{}{ \\ \text{#4}}
+        \end{gather*}
+        \nopagebreak
+        \tl_if_blank:nTF{#4}{
+            \vspace{0ex}
+        }{
+        }
+        \nopagebreak
+    \end{resultbox}
+}
+
+\NewDocumentCommand{\resultSmall}{m}{
+    \setlength{\fboxrule}{2pt}
+    \setlength{\fboxsep}{10pt}
+    \fbox{\nopagebreak\large #1}
+    % \begin{resultboxSmall}
+    %     \nopagebreak
+    %     \large
+    %     \setlength{\abovedisplayskip}{0pt}
+    %     \setlength{\belowdisplayskip}{0pt}
+    %     \begin{gather*}\useshortskip\nopagebreak #1\end{gather*}
+    % \end{resultboxSmall}
+}
+
+
+
+\ExplSyntaxOff
+
+
+
+
+% Solution
+\usepackage{xparse}
+\newcommand{\solution}{\bigskip\noindent\textbf{Solution.}\quad}

@@ -1,0 +1,52 @@
+% Formatting Packages
+\usepackage{rotating}
+
+\usepackage{sidecap}
+\sidecaptionvpos{figure}{b}
+
+\usepackage{capt-of}
+\usepackage{placeins} % \FloatBarrier
+
+\usepackage{caption}
+\captionsetup{
+    justification   = centering,
+    singlelinecheck = false}
+
+\usepackage{graphicx}
+\graphicspath{{images/}}
+
+\usepackage{fancybox}
+\usepackage{mdframed}
+
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+\NewDocumentCommand{\figref}{sm}{%
+    \IfBooleanTF{#1}{Figure~}{Fig.\;}%
+    \ref{#2}%
+}
+
+
+% \ExplSyntaxOn
+% \NewDocumentCommand{\image}{s O{} O{} O{} m}{
+%     \FloatBarrier
+%     \IfBooleanTF{#1}{
+%         \begin{sidewaysfigure}[th]
+%     }{
+%         \begin{figure}[th]
+%             }
+%             \centering
+%             \includegraphics
+%             \IfNoValueTF{#4}{}{[#4\]}%
+%             % \tl_if_blank:nTF{#4}{}{[#4]}%
+%             {#5}
+%             \tl_if_blank:nTF{#2}{}{ \caption{#2} }
+%             \tl_if_blank:nTF{#3}{}{ \label{#3} }
+%             \IfBooleanTF{#1}{
+%             \end{sidewaysfigure}
+%             }{
+%         \end{figure}
+%     }
+%     \FloatBarrier
+% }
+% \ExplSyntaxOff

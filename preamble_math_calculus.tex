@@ -1,0 +1,126 @@
+\usepackage{expl3}
+\usepackage{xparse}
+
+% multivariable calculus functions
+\let\divsym\div
+\renewcommand{\div}[1]{\nabla\cdot #1}
+
+\newcommand*{\del}{\nabla}
+\newcommand*{\grad}[1]{\nabla #1}
+\newcommand*{\curl}[1]{\nabla\times #1}
+\newcommand*{\laplacian}[1]{\nabla^2 #1}
+
+% Unit Vectors - Star adds space
+\NewDocumentCommand{\unitv}{so}{
+    \IfBooleanTF{#1}{\,}{}
+    \hat{a}
+    \IfValueTF{#2}{_{#2}}{}
+    \IfBooleanTF{#1}{\,}{}
+}
+
+\NewDocumentCommand{\unitvR}{o}{\unitv[\rho]}
+\NewDocumentCommand{\unitvP}{o}{\unitv[\phi]}
+\NewDocumentCommand{\unitvT}{o}{\unitv[\theta]}
+
+\NewDocumentCommand{\dx}{}{ \dl1x }
+\NewDocumentCommand{\dy}{}{ \dl1y }
+\NewDocumentCommand{\dz}{}{ \dl1z }
+\NewDocumentCommand{\dT}{}{ \dl1\theta }
+\NewDocumentCommand{\dL}{}{ \dl1\ell}
+
+\newcommand*{\dv}{\dl1v}
+
+\newcommand*{\dR}{\dl1\rho}
+\newcommand*{\dP}{\dl1\phi}
+\newcommand*{\dr}{\dl1r}
+
+\newcommand*{\ddx}{\diff*{}x}
+\newcommand*{\ddxp}{\diffp*{}x}
+\newcommand*{\ddy}{\diff*{}y}
+\newcommand*{\ddyp}{\diffp*{}y}
+\newcommand*{\ddz}{\diff*{}z}
+\newcommand*{\ddzp}{\diffp*{}z}
+
+\newcommand*{\ddR}{\diff*{}\rho}
+\newcommand*{\ddRp}{\diffp*{}\rho}
+\newcommand*{\ddP}{\diff*{}\phi}
+\newcommand*{\ddPp}{\diffp*{}\phi}
+
+\newcommand*{\ddr}{\diff*{}r}
+\newcommand*{\ddrp}{\diffp*{}r}
+\newcommand*{\ddT}{\diff*{}\theta}
+\newcommand*{\ddTp}{\diffp*{}\theta}
+
+% Integral \integrate[type][variable]{body}
+\ExplSyntaxOn
+\NewDocumentCommand{\integrate}{s O{} O{} O{\int} m}{
+    #4
+    \tl_if_blank:nTF{#3}{}{\sb{#3}}
+    #5
+    \IfBooleanTF{#1}{\cdot}{}
+    \tl_if_blank:nTF{#2}{}{\dl1{#2}}
+}
+\ExplSyntaxOff
+
+% Definite Integral \integrateDef(*){<var>}{<lim1>}{<lim2>}{<body>}
+\NewDocumentCommand{\integrateDef}{smmmm}{
+    \IfBooleanTF{#1}{ % Star adds \cdot before derivative term
+        \int_{#3}^{#4}#5\cdot\dl1#2
+    }{
+        \int_{#3}^{#4}#5\dl1#2
+    }
+}
+
+% Named Definite Integral \integrateDefN(*){<var>}{<lim1>}{<lim2>}{<body>}
+\NewDocumentCommand{\integrateDefN}{smmmm}{
+    \IfBooleanTF{#1}{ % Star adds \cdot before derivative term
+        \int_{#2=#3}^{#2=#4}#5\cdot\dl1#2
+    }{
+        \int_{#2=#3}^{#2=#4}#5\dl1#2
+    }
+}
+% Line integral
+\NewDocumentCommand{\integrateL}{som}{
+    \IfBooleanTF{#1}{ % Star adds \cdot before derivative term
+        \integrate*[#2][L]{#3}
+    }{
+        \integrate[#2][L]{#3}
+    }
+}
+
+% Line integral (Closed)
+\NewDocumentCommand{\integrateLO}{som}{
+    \IfBooleanTF{#1}{ % Star adds \cdot before derivative term
+        \integrate*[#2][L][\oint]{#3}
+    }{
+        \integrate[#2][L][\oint]{#3}
+    }
+}
+
+% Surface integral
+\NewDocumentCommand{\integrateS}{smm}{
+    \IfBooleanTF{#1}{ % Star adds \cdot before derivative term
+        \integrate*[#2][S]{#3}
+    }{
+        \integrate[#2][S]{#3}
+    }
+}
+
+% Surface integral
+\NewDocumentCommand{\integrateSO}{smm}{
+    \IfBooleanTF{#1}{ % Star adds \cdot before derivative term
+        \integrate*[#2][S][\oint]{#3}
+    }{
+        \integrate[#2][S][\oint]{#3}
+    }
+}
+
+% Volume integral
+\NewDocumentCommand{\integrateV}{smm}{
+    \IfBooleanTF{#1}{ % Star adds \cdot before derivative term
+        \integrate*[#2][v]{#3}
+    }{
+        \integrate[#2][v]{#3}
+    }
+}
+

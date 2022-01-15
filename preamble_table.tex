@@ -1,0 +1,18 @@
+% Table header (with booktabs)
+% \newcommand{\head}[1]{\multicolumn{1}{r}{#1}}
+\usepackage{booktabs}
+\usepackage{nicematrix}
+
+% NiceMatrix Options
+\NiceMatrixOptions{
+    cell-space-top-limit = 5pt,
+    cell-space-bottom-limit = 5pt}
+
+% Table header (with booktabs)
+% \newcommand{\head}[1]{\multicolumn{1}{r}{#1}}
+\newcommand*{\thead}[1]{
+    \multicolumn{1}{c}{\begin{tabular}{@{}c@{}}#1\end{tabular}}
+}
+
+% Variable with subscript in text mode
+\newcommand{\textvar}[2]{\emph{#1\textsubscript{#2}}}

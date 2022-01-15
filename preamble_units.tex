@@ -1,0 +1,61 @@
+\usepackage{siunitx}
+\sisetup{
+    per-mode=symbol, % Use a slash for "per" as in km/s, rather than km*s^-1
+    inter-unit-product = \ensuremath{{}\cdot{}}, % Use a center dot for products of units
+    detect-weight=true, detect-family=true, % Use the surrounding font
+    retain-explicit-plus,
+    list-units = single,
+    range-units = single
+}
+
+\NewDocumentCommand{\SIp}{mm}{\paren{\SI{#1}{#2}}}
+
+\NewDocumentCommand{\Oslash}{}{Ø}
+\let\O=\relax
+\DeclareSIUnit{\O}{\ohm}
+\DeclareSIUnit{\MO}{\mega\ohm}
+\DeclareSIUnit{\kO}{\kilo\ohm}
+\DeclareSIUnit{\mO}{\milli\ohm}
+
+\NewDocumentCommand{\Ssection}{}{§}
+\let\S=\relax
+\DeclareSIUnit{\S}{\siemens}
+\DeclareSIUnit{\mS}{\milli\siemens}
+\DeclareSIUnit{\uS}{\micro\siemens}
+\DeclareSIUnit{\nS}{\nano\siemens}
+\DeclareSIUnit{\pS}{\pico\siemens}
+\DeclareSIUnit{\fS}{\femto\siemens}
+
+\DeclareSIUnit{\F}{\farad}
+\DeclareSIUnit{\uF}{\micro\farad}
+\DeclareSIUnit{\nF}{\nano\farad}
+\DeclareSIUnit{\pF}{\pico\farad}
+\DeclareSIUnit{\fF}{\femto\farad}
+
+\DeclareSIUnit{\H}{\henry}
+\DeclareSIUnit{\mH}{\milli\henry}
+\DeclareSIUnit{\uH}{\micro\henry}
+\DeclareSIUnit{\nH}{\nano\henry}
+
+\DeclareSIUnit{\Wb}{\weber}
+\DeclareSIUnit{\mWb}{\milli\weber}
+
+\DeclareSIUnit{\rads}{\radian\per\s}
+\DeclareSIUnit{\krads}{\kilo\radian\per\s}
+
+\DeclareSIUnit{\Vpp}{\V_{pp}}
+\DeclareSIUnit{\mVpp}{\mV_{pp}}
+
+\DeclareSIUnit{\C}{\coulomb}
+\DeclareSIUnit{\mC}{\milli\coulomb}
+
+\DeclareSIUnit{\dBm}{dBm}
+\DeclareSIUnit{\dBi}{dBi}
+
+\DeclareSIUnit{\uW}{\micro\watt}
+\DeclareSIUnit{\nW}{\nano\watt}
+\DeclareSIUnit{\pW}{\pico\watt}
+\DeclareSIUnit{\fW}{\femto\watt}
+
+
+\DeclareSIUnit{\mi}{mi} % Not really SI...

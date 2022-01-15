@@ -1,0 +1,118 @@
+% Math Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicematrix}
+\usepackage{nicefrac}
+
+\usepackage{nccmath} % must be loaded before mathtools
+\usepackage{mathtools}
+\usepackage{steinmetz} % \phase{} for phasors
+
+\usepackage{faktor}
+\usepackage{cancel}
+
+
+% Math spacing
+\newlength{\spreadsize}
+\setlength\spreadsize{0.5\baselineskip}
+
+\newlength{\spreadsizeSmall}
+\setlength\spreadsizeSmall{0.5\spreadsize}
+
+% NiceMatrix Options
+\NiceMatrixOptions{
+    cell-space-top-limit = 5pt,
+    cell-space-bottom-limit = 5pt
+}
+
+\NewDocumentEnvironment{params}{}{
+    \begin{itemize}[noitemsep, topsep=0pt]
+        }{%
+    \end{itemize}
+}
+\NewDocumentCommand{\param}{mm}{
+    \item[$#1$]: #2
+}
+
+% SI
+\usepackage{siunitx}
+\sisetup{
+    per-mode=symbol, % Use a slash for "per" as in km/s, rather than km*s^-1
+    inter-unit-product = \ensuremath{{}\cdot{}}, % Use a center dot for products of units
+    detect-weight=true, detect-family=true, % Use the surrounding font
+    output-complex-root = \textrm{j},
+    complex-root-position = before-number
+}
+
+% Differentials
+\usepackage{diffcoeff}
+\diffdef{}
+{
+    op-symbol = \mathrm{d},
+    *-op-left = true
+}
+
+% Use display mode for fractions (double-display fraction)
+\NewDocumentCommand{\ddfrac}{mm}{
+    \frac{\displaystyle #1\vphantom{\big|}}{\displaystyle #2\vphantom{\Big|}}
+}
+
+% Vectors: Use bar instead of arrow
+\renewcommand{\vec}[1]{\bar{#1}}
+
+% Curly epsilon and phi
+\let\epsilonold\epsilon
+\renewcommand{\epsilon}{\varepsilon}
+
+% \let\phiold\phi
+% \renewcommand{\phi}{\varphi}
+
+% Equal sign (esp for tikz labels)
+\newcommand*{\equal}{=}
+
+% Brackets 
+\NewDocumentCommand{\paren}{m}{\left(#1\right)}
+\NewDocumentCommand{\brak}{m}{\left[#1\right]}
+\NewDocumentCommand{\abs}{m}{\left|#1\right|}
+\NewDocumentCommand{\abrak}{m}{\left\langle#1\right\rangle}
+\NewDocumentCommand{\cbrak}{m}{\left\{#1\right\}}
+
+\NewDocumentCommand{\evalat}{m O{} m}{
+    \left. #3\right\vert_{#1}^{#2}
+}
+
+% Laplace and Fourier transform
+\NewDocumentCommand{\laplace}{m}{
+    \mathcal{L}\cbrak{#1}
+}
+\NewDocumentCommand{\laplaceinv}{m}{
+    \mathcal{L}^{-1}\cbrak{#1}
+}
+
+
+
+
+% Notes
+\newcommand*{\note}[1]{\text{\,,}\quad\text{#1}}
+\newcommand*{\noteB}[1]{\text{\,,}\quad\textbf{#1}}
+\newcommand*{\noteS}[1]{\text{\,,}\hspace{0.5em}\text{#1}}
+\newcommand*{\noteSB}[1]{\text{\,,}\hspace{0.5em}\textbf{#1}}
+
+% long note (intertext), adds extra vertical space unless starred
+\NewDocumentCommand{\noteL}{sm}{
+    \intertext{\quad #2}
+    \IfBooleanTF{#1}{}{\intertext{}}
+}
+
+% Abbreviations
+\NewDocumentCommand{\sinT}{}{\sin\theta}
+\NewDocumentCommand{\cosT}{}{\cos\theta}
+
+
+% Number (from siunitx) in parentheses
+\NewDocumentCommand{\nump}{m}{\paren{\num{#1}}}
+\NewDocumentCommand{\numb}{m}{\brak{\num{#1}}}
+
+\usepackage{etoolbox,siunitx}
+\robustify\bfseries
+
