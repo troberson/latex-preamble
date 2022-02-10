@@ -68,6 +68,15 @@
 
 % Solution
 \usepackage{xparse}
-\newcommand{\solution}{\bigskip\noindent\textbf{Solution.}\quad}
+\NewDocumentCommand{\solution}{}{%
+    \bigskip\noindent\textbf{Solution.}\quad}
 
-\NewDocumentCommand{\blankspace}{}{\underline{\hspace{2cm}}}
+\NewDocumentCommand{\proof}{}{%
+    \bigskip\noindent\textbf{Proof.}\quad}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\blankspace}{o}{%
+    \underline{\hspace{1cm}%
+        \IfNoValueTF{#1}{}{#1}%
+        \hspace{1cm}}}
+\ExplSyntaxOff

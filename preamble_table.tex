@@ -2,6 +2,7 @@
 % \newcommand{\head}[1]{\multicolumn{1}{r}{#1}}
 \usepackage{booktabs}
 \usepackage{nicematrix}
+\usepackage{makecell}
 
 % NiceMatrix Options
 \NiceMatrixOptions{
@@ -10,7 +11,7 @@
 
 % Table header (with booktabs)
 % \newcommand{\head}[1]{\multicolumn{1}{r}{#1}}
-\newcommand*{\thead}[1]{
+\renewcommand*{\thead}[1]{
     \multicolumn{1}{c}{\begin{tabular}{@{}c@{}}#1\end{tabular}}
 }
 
