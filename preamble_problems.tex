@@ -67,6 +67,9 @@
 \NewDocumentCommand{\proof}{}{%
     \bigskip\noindent\textbf{Proof.}\quad}
 
+\NewDocumentCommand{\qed}{}{%
+    \ensuremath{\Box}}
+
 \NewDocumentCommand{\blankspace}{o}{%
     \underline{\hspace{1cm}%
         \IfNoValueTF{#1}{}{#1}%
