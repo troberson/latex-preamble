@@ -51,20 +51,13 @@
         \nopagebreak
     \end{resultbox}
 }
+\ExplSyntaxOff
 
 \NewDocumentCommand{\resultSmall}{m}{
     \setlength{\fboxrule}{2pt}
     \setlength{\fboxsep}{10pt}
     \fbox{\nopagebreak\large #1}
-    % \begin{resultboxSmall}
-    %     \nopagebreak
-    %     \large
-    %     \setlength{\abovedisplayskip}{0pt}
-    %     \setlength{\belowdisplayskip}{0pt}
-    %     \begin{gather*}\useshortskip\nopagebreak #1\end{gather*}
-    % \end{resultboxSmall}
 }
-\ExplSyntaxOff
 
 % Solution
 \usepackage{xparse}
@@ -72,9 +65,10 @@
 
 \NewDocumentCommand{\proof}{}{\noindent\textbf{Proof.}\quad}
 
-\ExplSyntaxOn
+\NewDocumentCommand{\qed}{}{%
+    \ensuremath{\Box}}
+
 \NewDocumentCommand{\blankspace}{o}{%
     \underline{\hspace{1cm}%
         \IfNoValueTF{#1}{}{#1}%
         \hspace{1cm}}}
-\ExplSyntaxOff
