@@ -61,16 +61,16 @@
 
 % Solution
 \usepackage{xparse}
-\NewDocumentCommand{\solution}{}{%
-    \bigskip\noindent\textbf{Solution.}\quad}
+\NewDocumentCommand{\solution}{}{\noindent\textbf{Solution.}\quad}
 
-\NewDocumentCommand{\proof}{}{%
-    \bigskip\noindent\textbf{Proof.}\quad}
+\NewDocumentCommand{\proof}{}{\noindent\textbf{Proof.}\quad}
 
 \NewDocumentCommand{\qed}{}{%
-    \ensuremath{\Box}}
+    \hfill{}\ensuremath{\Box}}
 
 \NewDocumentCommand{\blankspace}{o}{%
     \underline{\hspace{1cm}%
         \IfNoValueTF{#1}{}{#1}%
         \hspace{1cm}}}
+
+\NewDocumentCommand{\grader}{mm}{\textbf{Grader Comment (#1/#2).} }
