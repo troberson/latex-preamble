@@ -66,6 +66,10 @@
 % \let\phiold\phi
 % \renewcommand{\phi}{\varphi}
 
+% Wider empty set
+\let\emptysetold\emptyset
+\RenewDocumentCommand{\emptyset}{}{\varnothing}
+
 % Equal sign (esp for tikz labels)
 \newcommand*{\equal}{=}
 
