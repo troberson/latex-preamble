@@ -64,6 +64,8 @@
 \NewDocumentCommand{\solution}{}{\noindent\textbf{Solution.}\quad}
 
 \NewDocumentCommand{\proof}{}{\noindent\textbf{Proof.}\quad}
+\NewDocumentCommand{\proofspace}{}{\vspace*{3ex}}
+\NewDocumentCommand{\proofpart}{m}{\proofspace\noindent\textbf{#1}}
 
 \NewDocumentCommand{\qed}{}{%
     \hfill{}\ensuremath{\Box}}
